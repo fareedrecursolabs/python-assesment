@@ -25,8 +25,12 @@ SECRET_KEY = 'django-insecure-52ut!b3fih=a5_ix+vyv*bhnc6w$xc&hf7n7ok)h&+0m9$15k!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "ee34-206-42-124-38.ngrok-free.app",
+    ".ngrok-free.app",  # Allow all subdomains of ngrok-free.app
+]
 
 # Application definition
 
@@ -37,6 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'github_repos',
+    'github_commits',
+    'github_branches',
+    'github_webhook',
+    'github_pull_requests',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +90,25 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pythonAssesment',
+        'USER': 'fareed',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
