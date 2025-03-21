@@ -12,4 +12,4 @@ class PullRequest(models.Model):
   repo = models.ForeignKey(GithubRepo, on_delete=models.CASCADE, related_name="pull_requests", blank=True, null=True)
 
   def __str__(self):
-        return f"{self.title} ({self.state})"
+    return f"{self.title} ({self.state})"
