@@ -17,7 +17,7 @@ from uuid import uuid4
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def github_webhook(request):
-    print("isinstance(commits, list)", isinstance(request.data, list), request.data)
+    print("isinstance(commits, list)", isinstance(request.data, list),'request.data', request.data)
     repository = request.data.get("repository")
     pull_request = request.data.get("pull_request")
     repo_id: int = repository.get("id")
@@ -80,7 +80,7 @@ def createPullRequest(pull_request, repo_id) -> None:
         "created_at": pull_request.get("created_at"),
         "user": pull_request.get("user", {}).get("login"),
         "url": url,
-        "state": pull_request.get("state"),
+        "state": "merged" if pull_request.get("merged") else pull_request.get("state"),
         "repo": repo_id,
     }
     serializer = PullRequestSerializer(data=formatted_data)
@@ -92,7 +92,7 @@ def createPullRequest(pull_request, repo_id) -> None:
                 "created_at": pull_request.get("created_at"),
                 "user": pull_request.get("user", {}).get("login"),
                 "url": url,
-                "state": pull_request.get("state"),
+                "state": "merged" if pull_request.get("merged") else pull_request.get("state"),
                 "repo": repo,
             },
         )
