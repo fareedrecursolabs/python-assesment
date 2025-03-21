@@ -1,8 +1,6 @@
 from django.db import models
 from github_repos.models import GithubRepo
 import uuid
-# Create your models here.
-
 
 class PullRequest(models.Model):
   id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
