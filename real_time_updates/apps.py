@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GithubMergeConfig(AppConfig):
+class RealTimeUpdatesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'github_merge'
+    name = 'real_time_updates'

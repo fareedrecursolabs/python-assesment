@@ -24,5 +24,6 @@ urlpatterns = [
     path('commit/', include('github_commits.urls')),
     path('repo/', include('github_repos.urls')),
     path('branch/', include('github_branches.urls')),
-    path('pull_request/', include('github_pull_requests.urls'))
+    path('pull_request/', include('github_pull_requests.urls')),
+    path('real_time_update/', include('real_time_updates.urls'))
 ]
