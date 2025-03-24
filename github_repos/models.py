@@ -7,6 +7,7 @@ class GithubRepo(models.Model):
   url = models.CharField(max_length=255, blank=True, null=True)
   owner_name = models.CharField(max_length=255, blank=True, null=True)
   owner_email = models.CharField(max_length=255, blank=True, null=True)
+  main_branch = models.CharField(max_length=255, blank=True, null=True)
 
   def __str__(self):
     return self.name

@@ -13,4 +13,4 @@ class Commit(models.Model):
   branch = models.ForeignKey(Branch, on_delete=models.CASCADE, related_name="commits", blank=True, null=True)
 
   def __str__(self):
-    return self.message
+    return f"{self.message} {self.branch.name}"

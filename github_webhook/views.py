@@ -33,7 +33,7 @@ def github_webhook(request):
 
     if not verify_github_signature(request):
         return Response({"error": "Unauthorized"}, status=401)
-
+    print(request.data)
     repository = request.data.get("repository")
     print(repository)
     pull_request = request.data.get("pull_request")

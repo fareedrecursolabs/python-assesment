@@ -1,18 +1,18 @@
 import json
+import os
 import redis
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from github_commits.models import Commit
 
-# Initialize Redis client
-redis_client = redis.StrictRedis(host="localhost", port=6379, decode_responses=True)
+
+REDIS_HOST = os.getenv("REDIS_HOST")
+REDIS_PORT = os.getenv("REDIS_PORT")
+
+redis_client = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
 
 @receiver(post_save, sender=Commit)
 def send_commit_update(sender, instance, **kwargs):
-    """
-    Triggered when a new commit is saved.
-    Publishes commit data to a Redis channel.
-    """
     data = {
         "id": str(instance.id),
         "message": instance.message,
@@ -24,5 +24,4 @@ def send_commit_update(sender, instance, **kwargs):
         "branch": instance.branch.name if instance.branch else None,
     }
 
-    # Publish commit data to a Redis channel
     redis_client.publish(f"commits_{instance.branch_id}", json.dumps(data))
