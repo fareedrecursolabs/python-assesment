@@ -8,8 +8,9 @@ from github_commits.models import Commit
 
 REDIS_HOST = os.getenv("REDIS_HOST")
 REDIS_PORT = os.getenv("REDIS_PORT")
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
-redis_client = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
+redis_client = redis.StrictRedis(host=REDIS_HOST, password=REDIS_PASSWORD, port=REDIS_PORT, decode_responses=True)
 
 @receiver(post_save, sender=Commit)
 def send_commit_update(sender, instance, **kwargs):

@@ -15,8 +15,9 @@ async def event_stream(branch_id):
 
     REDIS_HOST = os.getenv("REDIS_HOST")
     REDIS_PORT = os.getenv("REDIS_PORT")
+    REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
-    redis_client = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
+    redis_client = redis.StrictRedis(host=REDIS_HOST, password=REDIS_PASSWORD, port=REDIS_PORT, decode_responses=True)
 
     pubsub = redis_client.pubsub()
     await pubsub.subscribe(f"commits_{branch_id}")
