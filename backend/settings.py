@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "ee34-206-42-124-38.ngrok-free.app",
     ".ngrok-free.app",  # Allow all subdomains of ngrok-free.app
+    "python-assesment-production.up.railway.app"
 ]
 
 # Application definition
