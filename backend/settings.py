@@ -21,8 +21,6 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 GITHUB_WEBHOOK_SECRET = os.getenv("GITHUB_WEBHOOK_SECRET")
-if not GITHUB_WEBHOOK_SECRET:
-    raise ValueError("❌ GITHUB_WEBHOOK_SECRET is not set in the environment!")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
