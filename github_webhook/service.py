@@ -10,7 +10,6 @@ from github_branches.models import Branch
 from github_pull_requests.serializer import PullRequestSerializer
 from github_pull_requests.models import PullRequest
 
-
 class RepositoryData(Dict[str, Any]):
     id: int
     name: Optional[str]
